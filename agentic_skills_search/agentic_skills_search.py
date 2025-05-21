@@ -59,10 +59,10 @@ user_query = "Find subtopics related to machine learning in DBpedia. Return the 
 # 7. Run agent and extract concepts
 agent_response = agent.run(user_query)
 concepts = [c.strip() for c in agent_response.split(",") if c.strip()]
-print("🔍 Extracted Concepts:", concepts)
+print("Extracted Concepts:", concepts)
 
 # 8. Search FAISS for each concept
-print("\n🔗 Similar Concepts in Vector DB:")
+print("\n Similar Concepts in Vector DB:")
 for concept in concepts:
     vector = embedder.encode([concept], normalize_embeddings=True)
     D, I = index.search(vector, k=3)
